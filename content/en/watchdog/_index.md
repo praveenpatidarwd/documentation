@@ -22,8 +22,6 @@ further_reading:
   text: "Understand user impact scope with Watchdog Impact Analysis"
 ---
 
-{{< img src="watchdog/watchdog_page.png" alt="Watchdog page"  >}}
-
 ## Overview
 
 Watchdog is an algorithmic feature for APM performance and infrastructure metrics that automatically detects potential application and infrastructure issues. It leverages the same seasonal algorithms that power anomalies and dashboards. Watchdog observes trends and patterns in:
@@ -41,12 +39,12 @@ Watchdog is an algorithmic feature for APM performance and infrastructure metric
   * [Amazon Web Services][5], for the [S3][6], [ELB/ALB/NLB][7], [CloudFront][8], and [DynamoDB][9] Amazon services.
   * [Alerting][10]
 
-Watchdog looks for irregularities in metrics, like a sudden spike in the hit rate. For each irregularity, the [Watchdog page][11] displays a Watchdog story. Each story includes a graph of the detected metric irregularity and gives more information about the relevant timeframe and endpoint or endpoints. To avoid false alarms, Watchdog only reports issues after observing your data for a sufficient amount of time to establish a high degree of confidence. The minimum amount of data needed to see irregularities depends on the anomaly you are looking at and can range from four days to two weeks. 
+Watchdog looks for irregularities in metrics, like a sudden spike in the hit rate. For each irregularity, the [Watchdog page][11] displays a Watchdog alert. Each alert includes a graph of the detected metric irregularity and gives more information about the relevant time frame and endpoint or endpoints. To avoid false alarms, Watchdog only reports issues after observing your data for a sufficient amount of time to establish a high degree of confidence. The minimum amount of data needed to see irregularities depends on the anomaly you are looking at and can range from four days to two weeks. 
 
 ## Root Cause Analysis for APM (beta)
 
 <div class="alert alert-warning">
-Watchdog Root Cause Analysis (RCA) is currently in beta. <a href="https://docs.google.com/forms/d/1gKdjVslrxMv_St7sIH7c47FJuf_hKvKAt_G9SXnE4Nw/edit?ts=5fbd5390&gxids=7628">Use this form</a> to request access.
+Watchdog Root Cause Analysis (RCA) is in beta. <a href="https://docs.google.com/forms/d/1gKdjVslrxMv_St7sIH7c47FJuf_hKvKAt_G9SXnE4Nw/edit?ts=5fbd5390&gxids=7628">Use this form</a> to request access.
 </div>
 
 Watchdog RCA enables APM customers to identify causal relationships between different symptoms across your applications and infrastructures. This information helps you to speed up your root cause analysis and reduce your mean time to recovery (MTTR). 
@@ -66,11 +64,9 @@ Watchdog considers the relationships between the following types of signals:
 
 Watchdog also correlates signals and anomalies from the different parts of your infrastructure (logs, traces, and metrics) and adds them as evidence to each RCA story. To enable this, it is recommended that you set up [unified tagging][12] across your telemetry.
 
-## Story details
+## Alert details
 
-Clicking on the story shows further details about the detected irregularity:
-
-{{< img src="watchdog/watchdog_story.png" alt="Watchdog story"  >}}
+Clicking on the alert shows further details about the detected irregularity.
 
 The graph in this story shows the latency values of the ELB in three different availability zones. Watchdog detected similar anomalies in this metric from a single load balancer enabled in three availability zones, and automatically grouped these findings together in a single story. After a period of consistently low latency, the metric in all three AZs rises sharply—in the highlighted area of the graph, which indicates the timeframe of the anomaly.
 
@@ -90,7 +86,7 @@ To see archived stories, select the checkbox option to "Show N archived stories"
 
 When an anomaly appears in one service, there’s often a corresponding anomaly in a related service. For example, if one service’s database queries get throttled, any downstream service will experience elevated latency. You need to troubleshoot this not as two separate issues, but rather as one issue stemming from a single root cause.
 
-Watchdog automatically groups related APM anomalies into a single story whenever it detects an issue that affects multiple services. The story will include a dependency map that shows the service where the issue originated and the downstream dependencies that were affected. This gives you visibility on  the impact of the issue and a quick path to the source of the issue and to move on resolution.
+Watchdog automatically groups related APM anomalies into a single story whenever it detects an issue that affects multiple services. The story will include a dependency map that shows the service where the issue originated and the downstream dependencies that were affected. This gives you visibility on the impact of the issue and a quick path to the source of the issue and to move on resolution.
 
 ##### Related dashboards
 
@@ -100,11 +96,11 @@ To speed up further investigations, Datadog may suggest some of your dashboards 
 
 Monitors associated with your stories are displayed at the bottom. Each monitor displayed has the metric of the current story and its associated tags included in its scope.
 
-{{< img src="watchdog/watchdog_monitors.png" alt="Watchdog monitors"  style="width:75%;">}}
+{{< img src="watchdog/watchdog_monitors.png" alt="Watchdog monitors" style="width:75%;">}}
 
 Additionally, Watchdog suggests one or more monitors that are configured to trigger if the story happens again. Click the **Enable Monitor** button to enable them for your organization. See the [Watchdog monitor documentation][13] to learn how to create a Watchdog monitor.
 
-## Watchdog Impact Analysis
+## Watchdog impact analysis
 
 Whenever Watchdog finds a new APM anomaly, it simultaneously analyzes a variety of latency and error metrics that are submitted from the RUM SDKs to evaluate if the anomaly is adversely impacting any web or mobile pages visited by your users. 
 
@@ -114,7 +110,7 @@ If Watchdog determines that the end-user experience is impacted, it provides a s
 - An estimated number of impacted users
 - A link to the list of impacted users, so that you can reach out to them, if needed. 
 
-{{< img src="watchdog/rum_impact_analysis.png" alt="Watchdog Impact Analysis"  style="width:75%;">}}
+{{< img src="watchdog/rum_impact_analysis.png" alt="Watchdog Impact Analysis" style="width:75%;">}}
 
 This feature is automatically enabled for all APM and RUM users. Whenever Watchdog APM alerts are associated with end-user impacts, affected **users** and **view paths** appear in the **Impacts** section of your Watchdog stories. Click **users** to view the affected users’ contact information if you need to reach out to them. Click **view paths** to access the impacted RUM views for additional information.
 
