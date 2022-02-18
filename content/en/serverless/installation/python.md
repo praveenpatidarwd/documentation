@@ -2,24 +2,18 @@
 title: Instrumenting Python Serverless Applications
 kind: documentation
 further_reading:
-- link: "/serverless/serverless_integrations/plugin/"
+- link: 'serverless/datadog_lambda_library/python'
   tag: "Documentation"
-  text: "Datadog Serverless Plugin"
-- link: "/serverless/serverless_integrations/macro/"
-  tag: "Documentation"
-  text: "Datadog Serverless Macro"
-- link: "/serverless/serverless_integrations/cli/"
-  tag: "Documentation"
-  text: "Datadog Serverless CLI"
-- link: '/serverless/troubleshooting/serverless_tagging/'
-  tag: 'Documentation'
-  text: 'Tagging Serverless Applications'
+  text: 'Datadog Lambda Library for Python'
 - link: 'serverless/distributed_tracing/'
   tag: 'Documentation'
   text: 'Tracing Serverless Applications'
 - link: 'serverless/custom_metrics/'
   tag: 'Documentation'
   text: 'Submitting Custom Metrics from Serverless Applications'
+- link: '/serverless/guide/troubleshoot_serverless_monitoring'
+  tag: 'Documentation'
+  text: 'Troubleshoot Serverless Monitoring'
 aliases:
     - /serverless/datadog_lambda_library/python/
     - /serverless/guide/python/
@@ -602,6 +596,10 @@ For more information on custom metric submission, see [here][6]. For additional 
 
 If your Lambda function is running in a VPC, follow these [instructions][8] to ensure that the extension can reach Datadog API endpoints.
 
+## Troubleshooting
+
+If you have trouble collecting the monitoring data after following the instructions above, refer to the [serverless monitoring troubleshooting guide][9] for help.
+
 ## Further Reading
 
 {{< partial name="whats-next/whats-next.html" >}}
@@ -614,3 +612,4 @@ If your Lambda function is running in a VPC, follow these [instructions][8] to e
 [6]: /serverless/custom_metrics?tab=python
 [7]: /tracing/custom_instrumentation/python/
 [8]: /serverless/libraries_integrations/extension/#vpc
+[9]: /serverless/guide/troubleshoot_serverless_monitoring/
